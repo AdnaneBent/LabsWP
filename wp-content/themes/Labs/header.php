@@ -15,6 +15,10 @@
 
 
     <?php
+    $logoLabs = get_theme_mod('labs-logo-setting');
+    ?>
+
+    <?php
     // Ajout des css de manière dynamique grâce à functions.php
     wp_head();
     ?>
@@ -39,7 +43,14 @@
     <!-- Header section -->
     <header class="header-section">
         <div class="logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt=""><!-- Logo -->
+            <?= wp_get_attachment_image(
+                $logoLabs,
+                '',
+                [
+                    'class' => 'img-fluid'
+                ]
+            ); ?>
+            <!-- Logo -->
         </div>
         <!-- Navigation -->
         <div class="responsive"><i class="fa fa-bars"></i></div>
@@ -51,6 +62,14 @@
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="elements.html">Elements</a></li>
             </ul>
+            <?php
+            wp_nav_menu([
+                // 'menu' => 'main-menu',
+                'menu_class' => 'navbar-nav ml-auto',
+                'theme-location' => 'main-menu',
+                'container' => ''
+            ]);
+            ?>
         </nav>
     </header>
     <!-- Header section end -->
