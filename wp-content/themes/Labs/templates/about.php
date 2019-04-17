@@ -1,8 +1,11 @@
 <!-- variable -->
 
 <?php
+$titre_about = get_theme_mod('labs-about-titre-setting');
 $column_right = get_theme_mod('labs-about-right');
 $column_left = get_theme_mod('labs-about-left');
+$bouton = get_theme_mod('labs-about-bouton-setting');
+$bgvideo = get_theme_mod('labs-about-video-setting')
 
 ?>
 
@@ -55,7 +58,7 @@ $column_left = get_theme_mod('labs-about-left');
     <div class="about-contant">
         <div class="container">
             <div class="section-title">
-                <h2>Get in <span>the Lab</span> and discover the world</h2>
+                <h2><?= $titre_about ?></h2>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -66,14 +69,20 @@ $column_left = get_theme_mod('labs-about-left');
                 </div>
             </div>
             <div class="text-center mt60">
-                <a href="" class="site-btn">Browse</a>
+                <a href="<?= $bouton['url'] ?>" class="site-btn"><?= $bouton['text'] ?></a>
             </div>
             <!-- popup video -->
             <div class="intro-video">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/video.jpg" alt="">
-                        <a href="https://www.youtube.com/watch?v=JgHfx2v9zOU" class="video-popup">
+                        <?= wp_get_attachment_image(
+                            $bgvideo['img'],
+                            '',
+                            [
+                                'class' => 'img-fluid'
+                            ]
+                        ); ?>
+                        <a href="<?= $bgvideo['url'] ?>" class="video-popup">
                             <i class="fa fa-play"></i>
                         </a>
                     </div>

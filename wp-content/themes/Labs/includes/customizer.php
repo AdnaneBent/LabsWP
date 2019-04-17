@@ -125,6 +125,7 @@ function ajout_personnalisation_logo($wp_customize)
 function ajout_personnalisation_about($wp_customize)
 {
     // customize section about
+
     // panel pour la section about
     $wp_customize->add_panel('labs-panel-about', [
         'title' => __('Section About'),
@@ -132,18 +133,69 @@ function ajout_personnalisation_about($wp_customize)
     ]);
     // fin panel about
 
+    // Les SECTIONS //
 
-    $wp_customize->add_section('labs-about-section-left', [
+    // section titre
+
+    $wp_customize->add_section('labs-about-titre', [
         'panel' => 'labs-panel-about',
-        'title' => __('Personnalisation de la section de gauche'),
+        'title' => __('Personnalisation du titre'),
+        'description' => __('Personnalisez le titre de la section about')
+    ]);
+
+    // Fin section titre
+
+
+    // section des textes
+
+    $wp_customize->add_section('labs-about-section', [
+        'panel' => 'labs-panel-about',
+        'title' => __('Section des deux textes'),
         'description' => __('Personnalisez les éléments de la section')
     ]);
 
-    $wp_customize->add_section('labs-about-section-right', [
+    // $wp_customize->add_section('labs-about-section-right', [
+    //     'panel' => 'labs-panel-about',
+    //     'title' => __('Personnalisation de la section de droite'),
+    //     'description' => __('Personnalisez les éléments de la section')
+    // ]);
+
+    // Fin section des textes
+
+    // section bouton
+
+    $wp_customize->add_section('labs-about-bouton', [
         'panel' => 'labs-panel-about',
-        'title' => __('Personnalisation de la section de droite'),
-        'description' => __('Personnalisez les éléments de la section')
+        'title' => __('Personnalisation du bouton'),
+        'description' => __('Personnalisez le bouton')
     ]);
+
+    // Fin section bouton
+
+    // Section video
+
+    $wp_customize->add_section('labs-about-video', [
+        'panel' => 'labs-panel-about',
+        'title' => __('Personnalisation de la vidéo'),
+        'description' => __('Personnalisez la vidéo')
+    ]);
+
+    // Fin section video
+
+    // FIN des SECTIONS //
+
+    // Les SETTINGS //
+
+    // Setting du titre
+
+    $wp_customize->add_setting('labs-about-titre-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting du titre
+
+    // Setting des textes
 
     $wp_customize->add_setting('labs-about-left[text]', [
         'type' => 'theme_mod',
@@ -155,8 +207,56 @@ function ajout_personnalisation_about($wp_customize)
         'sanitize_callback' => 'sanitize_textarea_field'
     ]);
 
+    // Fin setting textes
+
+    // Setting bouton
+
+    $wp_customize->add_setting('labs-about-bouton-setting[text]', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_setting('labs-about-bouton-setting[url]', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting bouton
+
+    // Setting vidéo
+
+    $wp_customize->add_setting('labs-about-video-setting[img]', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_file_name',
+    ]);
+
+    $wp_customize->add_setting('labs-about-video-setting[url]', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting vidéo
+
+    // FIN des SETTINGS //
+
+    // Les CONTROLS //
+
+    // Control du titre
+
+    $wp_customize->add_control('labs-about-titre-control', [
+        'section' => 'labs-about-titre',
+        'settings' => 'labs-about-titre-setting',
+        'label' => __('Le titre'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+    // Fin control du titre
+
+    // Control des textes
+
     $wp_customize->add_control('labs-about-text-left-control', [
-        'section' => 'labs-about-section-left',
+        'section' => 'labs-about-section',
         'settings' => 'labs-about-left[text]',
         'label' => __('Texte colonne gauche'),
         'description' => __('Personnalisez le texte de la colonne gauche'),
@@ -164,12 +264,56 @@ function ajout_personnalisation_about($wp_customize)
     ]);
 
     $wp_customize->add_control('labs-about-text-right-control', [
-        'section' => 'labs-about-section-right',
+        'section' => 'labs-about-section',
         'settings' => 'labs-about-right[text]',
         'label' => __('Texte colonne droite'),
         'description' => __('Personnalisez le texte de la colonne droite'),
         'type' => 'textarea'
     ]);
+
+    // Fin control textes
+
+    // Control bouton
+
+    $wp_customize->add_control('labs-about-bouton-control', [
+        'section' => 'labs-about-bouton',
+        'settings' => 'labs-about-bouton-setting[text]',
+        'label' => __('Texte du bouton'),
+        'description' => __('Personnalisez le texte de votre bouton'),
+        'type' => 'input'
+    ]);
+
+    $wp_customize->add_control('labs-about-bouton-url-control', [
+        'section' => 'labs-about-bouton',
+        'settings' => 'labs-about-bouton-setting[url]',
+        'label' => __("l'url de votre bouton"),
+        'description' => __('Le lien'),
+        'type' => 'input'
+    ]);
+
+    // Fin control bouton
+
+    // Control vidéo
+
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'labs-image-video-control', [
+        'section' => 'labs-about-video',
+        'settings' => 'labs-about-video-setting[img]',
+        'label' => __("Ceci est l'image de votre vidéo"),
+        'description' => __("Image de la vidéo"),
+        'mime_type' => 'image'
+    ]));
+
+    $wp_customize->add_control('labs-about-video-url-control', [
+        'section' => 'labs-about-video',
+        'settings' => 'labs-about-video-setting[url]',
+        'label' => __("l'url de votre vidéo"),
+        'description' => __('Le lien de la vidéo'),
+        'type' => 'input'
+    ]);
+
+    // Fin control vidéo
+
+    // FIN CONTROLS //
 
     // fin customize texte
 
