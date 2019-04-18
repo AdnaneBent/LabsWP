@@ -32,3 +32,4 @@ class EnqueueScript
 }
 
 add_action('wp_enqueue_scripts', [EnqueueScript::class, 'ajout_css_js']);
+add_action('admin_enqueue_scripts', [EnqueueScript::class, 'ajout_css_js']);

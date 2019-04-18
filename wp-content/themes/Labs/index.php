@@ -9,7 +9,7 @@ get_template_part('templates/testimonial');
 
 get_template_part('templates/service');
 
-get_template_part('templates/team.php');
+get_template_part('templates/team');
 
 get_template_part('templates/promotion');
 
