@@ -25,7 +25,9 @@
 
 
 <div class="text-center">
-    <h1 style="font-size:110px;margin:50px;"><i id="monicone" class="<?= get_post_meta(get_the_ID(), 'icone_choic', true); ?>"></i></h1>
+    <h1 style="font-size:110px;margin:50px;">
+        <i id="monicone" class="<?= get_post_meta(get_the_ID(), 'icone_choic', true); ?>"></i>
+    </h1>
 </div>
 
 <script>
