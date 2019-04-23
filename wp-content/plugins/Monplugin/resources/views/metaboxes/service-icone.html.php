@@ -18,8 +18,14 @@
             </tr>
         </tbody>
     </table>
-    <h1><i id=""></i></h1>
-    <input type="hidden" id="input" name="">
+</div>
+
+
+<input type="hidden" id="input" name='icone_choic' value="">
+
+
+<div class="text-center">
+    <h1 style="font-size:110px;margin:50px;"><i id="monicone" class="<?= get_post_meta(get_the_ID(), 'icone_choic', true); ?>"></i></h1>
 </div>
 
 <script>
@@ -27,12 +33,16 @@
 
     const newClick = (event) => {
         let input = document.querySelector('#input');
+        let i = document.querySelector('#monicone');
         let click = event.currentTarget
         input.value = click.className;
         let valuee = document.querySelector('.bg-success');
         if (valuee)
             valuee.classList.remove('bg-success');
         click.classList.add('bg-success');
+
+        i.className = '';
+        i.className = input.value;
     };
     icones.forEach(icone => icone.addEventListener('click', newClick));
 </script>
