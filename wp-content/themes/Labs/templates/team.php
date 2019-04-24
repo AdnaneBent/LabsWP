@@ -1,9 +1,17 @@
+<?php
+$titreTeam = get_theme_mod('labs-service-team-setting') ?>
+
 <!-- Team Section -->
 <div class="team-section spad">
     <div class="overlay"></div>
     <div class="container">
         <div class="section-title">
-            <h2>Get in <span>the Lab</span> and meet the team</h2>
+            <?php
+            $titreTeam = get_theme_mod('labs-team-titre-setting', __('Get in <span>The Lab</span> and discover the world'));
+            $titreTeam = str_replace('[', '<span>', $titreTeam);
+            $titreTeam = str_replace(']', '</span>', $titreTeam);
+            ?>
+            <h2><?= $titreTeam ?></h2>
         </div>
         <div class="row">
             <!-- single member -->

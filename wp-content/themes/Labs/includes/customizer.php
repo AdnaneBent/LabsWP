@@ -318,5 +318,361 @@ function ajout_personnalisation_about($wp_customize)
     // fin customize texte
 
 }
+
+
+function ajout_personnalisation_titre($wp_customize)
+{
+    // customize section about
+
+    // panel pour la section about
+    $wp_customize->add_panel('labs-panel-titre', [
+        'title' => __('Les titres'),
+        'Description' => __('Personnalisation des titres')
+    ]);
+    // fin panel about
+
+    // Les SECTIONS //
+
+    // section testimonial titre
+
+    $wp_customize->add_section('labs-testimonial-titre', [
+        'panel' => 'labs-panel-titre',
+        'title' => __('Titre section testimonial'),
+        'description' => __('Personnalisez le titre de la section testimonial')
+    ]);
+
+    // Fin testimonial titre
+
+
+    // section service titre
+
+    $wp_customize->add_section('labs-service-titre', [
+        'panel' => 'labs-panel-titre',
+        'title' => __('Titre section service'),
+        'description' => __('Personnalisez le titre de la section service')
+    ]);
+
+    // Fin service titre
+
+    // section team titre
+
+    $wp_customize->add_section('labs-team-titre', [
+        'panel' => 'labs-panel-titre',
+        'title' => __('Titre section team'),
+        'description' => __('Personnalisez le titre de la section service')
+    ]);
+
+    // fin section team titre
+
+    // Section Stand Out Titre et texte
+
+    $wp_customize->add_section('labs-stand', [
+        'panel' => 'labs-panel-titre',
+        'title' => __('Section Stand Out'),
+        'description' => __('Personnalisez la section Stand Out')
+    ]);
+
+    // Fin section Stand Out
+
+    // FIN des SECTIONS //
+
+    // Les SETTINGS //
+
+    // Setting testimonial du titre
+
+    $wp_customize->add_setting('labs-testimonial-titre-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting testimonial du titre
+
+    // Setting service du titre
+
+    $wp_customize->add_setting('labs-service-titre-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting service du titre
+
+    // Setting team du titre
+
+    $wp_customize->add_setting('labs-team-titre-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting team
+
+    // Setting Stand Out du titre et du texte
+
+    $wp_customize->add_setting('labs-stand-titre-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_setting('labs-stand-text-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_setting('labs-stand-bouton-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin Setting Stand Out
+
+    // FIN des SETTINGS //
+
+    // Les CONTROLS //
+
+    // Control du titre testimonial
+
+    $wp_customize->add_control('labs-testimonial-titre-control', [
+        'section' => 'labs-testimonial-titre',
+        'settings' => 'labs-testimonial-titre-setting',
+        'label' => __('Titre Testimonial'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+    // Fin control du titre testimonial
+
+    // Control du titre service
+
+    $wp_customize->add_control('labs-service-titre-control', [
+        'section' => 'labs-service-titre',
+        'settings' => 'labs-service-titre-setting',
+        'label' => __('Titre Service'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+    // Fin control titre service
+
+    // Control team service
+
+    $wp_customize->add_control('labs-team-titre-control', [
+        'section' => 'labs-team-titre',
+        'settings' => 'labs-team-titre-setting',
+        'label' => __('Titre Service'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+    // Fin control team service
+
+    // Control Stand Out
+
+    $wp_customize->add_control('labs-stand-titre-control', [
+        'section' => 'labs-stand',
+        'settings' => 'labs-stand-titre-setting',
+        'label' => __('Titre Service'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+
+    $wp_customize->add_control('labs-stand-text-control', [
+        'section' => 'labs-stand',
+        'settings' => 'labs-stand-text-setting',
+        'label' => __('texte Stand Out'),
+        'description' => __('Personnalisez du texte'),
+        'type' => 'textarea'
+    ]);
+
+    $wp_customize->add_control('labs-stand-bouton-control', [
+        'section' => 'labs-stand',
+        'settings' => 'labs-stand-bouton-setting',
+        'label' => __('texte du bouton Stand Out'),
+        'description' => __('Personnalisez du texte du bouton'),
+        'type' => 'input'
+    ]);
+
+    // Fin control Stand Out
+
+    // FIN CONTROLS //
+
+
+}
+
+function ajout_personnalisation_contact($wp_customize)
+{
+    // customize section about
+
+    // panel pour la section about
+    $wp_customize->add_panel('labs-panel-contact', [
+        'title' => __('Section Contact'),
+        'Description' => __('Personnalisation de la partie contact')
+    ]);
+    // fin panel about
+
+    // Les SECTIONS //
+
+    // section contact titre
+
+    $wp_customize->add_section('labs-contact-titre', [
+        'panel' => 'labs-panel-contact',
+        'title' => __('Titre section contact'),
+        'description' => __('Personnalisez le titre de la section contact')
+    ]);
+
+    // Fin contact titre
+
+
+    // section texte contact
+
+    $wp_customize->add_section('labs-contact-text', [
+        'panel' => 'labs-panel-contact',
+        'title' => __('Texte section contact'),
+        'description' => __('Personnalisez le texte de la section contact')
+    ]);
+
+    // Fin texte contact
+
+    // section coordonnée contact
+
+    $wp_customize->add_section('labs-contact-data', [
+        'panel' => 'labs-panel-contact',
+        'title' => __('Coordonnée'),
+        'description' => __('Personnalisez les coordonnées de la section contact')
+    ]);
+
+    // Fin coordonnées contact
+
+    // FIN des SECTIONS //
+
+    // Les SETTINGS //
+
+    // Setting contact titre
+
+    $wp_customize->add_setting('labs-contact-titre-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting contact titre
+
+    // Setting contact texte
+
+    $wp_customize->add_setting('labs-contact-text-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting contact texte
+
+    // Setting contact coordonnées
+
+    $wp_customize->add_setting('labs-contact-soust-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+
+    $wp_customize->add_setting('labs-contact-adress-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_setting('labs-contact-postal-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_setting('labs-contact-tel-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_setting('labs-contact-mail-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting contact coordonnées
+
+
+    // FIN des SETTINGS //
+
+    // Les CONTROLS //
+
+    // Control du titre contact
+
+    $wp_customize->add_control('labs-contact-titre-control', [
+        'section' => 'labs-contact-titre',
+        'settings' => 'labs-contact-titre-setting',
+        'label' => __('Titre Contact'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+    // Fin control du titre contact
+
+    // Control du texte contact
+
+    $wp_customize->add_control('labs-contact-text-control', [
+        'section' => 'labs-contact-text',
+        'settings' => 'labs-contact-text-setting',
+        'label' => __('Texte Contact'),
+        'description' => __('Personnalisez le texte'),
+        'type' => 'textarea'
+    ]);
+
+    // Fin control texte contact
+
+    // Control coordonnées service
+
+    $wp_customize->add_control('labs-contact-data-control', [
+        'section' => 'labs-contact-data',
+        'settings' => 'labs-contact-soust-setting',
+        'label' => __('Sous titre contact'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+    $wp_customize->add_control('labs-contact-adress-control', [
+        'section' => 'labs-contact-data',
+        'settings' => 'labs-contact-adress-setting',
+        'label' => __('Adresse'),
+        'description' => __('Personnalisez'),
+        'type' => 'input'
+    ]);
+
+
+    $wp_customize->add_control('labs-contact-postal-control', [
+        'section' => 'labs-contact-data',
+        'settings' => 'labs-contact-postal-setting',
+        'label' => __('Code Postal'),
+        'description' => __('Personnalisez du texte'),
+        'type' => 'input'
+    ]);
+
+    $wp_customize->add_control('labs-contact-tel-control', [
+        'section' => 'labs-contact-data',
+        'settings' => 'labs-contact-tel-setting',
+        'label' => __('Numéro de téléphone'),
+        'description' => __('Personnalisez le numéro'),
+        'type' => 'input'
+    ]);
+
+    $wp_customize->add_control('labs-contact-mail-control', [
+        'section' => 'labs-contact-data',
+        'settings' => 'labs-contact-mail-setting',
+        'label' => __('Adresse mail'),
+        'description' => __("Personnalisez l'adresse mail'"),
+        'type' => 'input'
+    ]);
+
+    // Fin control contact
+
+    // FIN CONTROLS //
+
+
+}
 add_action('customize_register', 'ajout_personnalisation_logo');
 add_action('customize_register', 'ajout_personnalisation_about');
+add_action('customize_register', 'ajout_personnalisation_titre');
+add_action('customize_register', 'ajout_personnalisation_contact');

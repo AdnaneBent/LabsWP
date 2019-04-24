@@ -1,8 +1,17 @@
+<?php
+$titreService = get_theme_mod('labs-service-titre-setting')
+?>
+
 <!-- Services section -->
 <div class="services-section spad">
     <div class="container">
         <div class="section-title dark">
-            <h2>Get in <span>the Lab</span> and see the services</h2>
+            <?php
+            $titreService = get_theme_mod('labs-service-titre-setting', __('Get in <span>The Lab</span> and discover the world'));
+            $titreService = str_replace('[', '<span>', $titreService);
+            $titreService = str_replace(']', '</span>', $titreService);
+            ?>
+            <h2><?= $titreService ?></h2>
         </div>
         <div class="row">
             <?php

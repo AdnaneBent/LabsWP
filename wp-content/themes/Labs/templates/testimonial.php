@@ -1,3 +1,6 @@
+<?php
+$titre_Testimonial = get_theme_mod('labs-testimonial-titre-setting'); ?>
+
 <!-- Testimonial section -->
 <div class="testimonial-section pb100">
     <div class="test-overlay"></div>
@@ -5,7 +8,12 @@
         <div id="testimonial" class="row">
             <div class="col-md-8 col-md-offset-4">
                 <div class="section-title left">
-                    <h2>What our clients say</h2>
+                    <?php
+                    $titre_Testimonial = get_theme_mod('labs-testimonial-titre-setting', __('Get in <span>The Lab</span> and discover the world'));
+                    $titre_Testimonial = str_replace('[', '<span>', $titre_Testimonial);
+                    $titre_Testimonial = str_replace(']', '</span>', $titre_Testimonial);
+                    ?>
+                    <h2><?= $titre_Testimonial ?></h2>
                 </div>
                 <div class="owl-carousel" id="testimonial-slide">
                     <?php
