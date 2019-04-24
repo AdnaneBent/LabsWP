@@ -26,7 +26,6 @@
             <?php
             $args = [
                 'post_type' => 'service',
-                'orderby'   => 'rand',
                 'posts_per_page' => 9,
             ];
             $query = new WP_Query($args);

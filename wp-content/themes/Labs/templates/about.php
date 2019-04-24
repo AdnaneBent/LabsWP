@@ -47,6 +47,11 @@ $bgvideo = get_theme_mod('labs-about-video-setting')
     <div class="about-contant">
         <div class="container">
             <div class="section-title">
+                <?php
+                $titre_about = get_theme_mod('labs-about-titre-setting', __('Get in <span>The Lab</span> and discover the world'));
+                $titre_about = str_replace('[', '<span>', $titre_about);
+                $titre_about = str_replace(']', '</span>', $titre_about);
+                ?>
                 <h2><?= $titre_about ?></h2>
             </div>
             <div class="row">
