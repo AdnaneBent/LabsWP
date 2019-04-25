@@ -28,17 +28,25 @@ get_header();
                 <!-- Single Post -->
                 <div class="single-post">
                     <div class="post-thumbnail">
-                        <img src="img/blog/blog-1.jpg" alt="">
+                        <img src="<?php the_post_thumbnail_url(); ?>" alt="" class="img-fluid">
                         <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
+                            <h2> <?= get_the_date('d') ?></h2>
+                            <h3>
+                                <?= get_the_date('F Y') ?>
+                            </h3>
                         </div>
                     </div>
                     <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
+                        <h2 class="post-title"><?php the_title() ?></h2>
                         <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
+                            <?php
+                            $terms = wp_get_post_terms($post->ID, ['post_tag']);
+                            foreach ($terms as $term) : ?>
+                                <a class="" href="<?php echo get_term_link($term); ?>">
+                                    <?php echo $term->name; ?>
+                                </a>
+                            <?php endforeach; ?>
+
                             <a href="">2 Comments</a>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
@@ -113,39 +121,15 @@ get_header();
                 </div>
                 <!-- Single widget -->
                 <div class="widget-item">
-                    <h2 class="widget-title">Categories</h2>
-                    <ul>
-                        <li><a href="#">Vestibulum maximus</a></li>
-                        <li><a href="#">Nisi eu lobortis pharetra</a></li>
-                        <li><a href="#">Orci quam accumsan </a></li>
-                        <li><a href="#">Auguen pharetra massa</a></li>
-                        <li><a href="#">Tellus ut nulla</a></li>
-                        <li><a href="#">Etiam egestas viverra </a></li>
-                    </ul>
-                </div>
-                <!-- Single widget -->
-                <div class="widget-item">
-                    <h2 class="widget-title">Instagram</h2>
-                    <ul class="instagram">
-                        <li><img src="img/instagram/1.jpg" alt=""></li>
-                        <li><img src="img/instagram/2.jpg" alt=""></li>
-                        <li><img src="img/instagram/3.jpg" alt=""></li>
-                        <li><img src="img/instagram/4.jpg" alt=""></li>
-                        <li><img src="img/instagram/5.jpg" alt=""></li>
-                        <li><img src="img/instagram/6.jpg" alt=""></li>
-                    </ul>
-                </div>
-                <!-- Single widget -->
-                <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
-                        <li><a href="">branding</a></li>
-                        <li><a href="">identity</a></li>
-                        <li><a href="">video</a></li>
-                        <li><a href="">design</a></li>
-                        <li><a href="">inspiration</a></li>
-                        <li><a href="">web design</a></li>
-                        <li><a href="">photography</a></li>
+                        <?php
+                        $terms = get_tags();
+                        foreach ($terms as $term) : ?>
+                            <li><a href="<?php echo get_term_link($term); ?>">
+                                    <?= $term->name; ?>
+                                </a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <!-- Single widget -->

@@ -50,13 +50,20 @@
                                 $terms = wp_get_post_terms($post->ID, ['post_tag']);
                                 foreach ($terms as $term) : ?>
                                     <a class="" href="<?php echo get_term_link($term); ?>">
+                                        <?= $term->name; ?>
+                                    </a>
+                                <?php endforeach; ?>
+                                <?php
+                                $terms = wp_get_post_terms($post->ID, ['category']);
+                                foreach ($terms as $term) : ?>
+                                    <a class="" href="<?php echo get_term_link($term); ?>">
                                         <?php echo $term->name; ?>
                                     </a>
                                 <?php endforeach; ?>
                                 <a href="">2 Comments</a>
                             </div>
                             <?php the_content() ?>
-                            <a href="blog-post.html" class="read-more">Read More</a>
+                            <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
                         </div>
                     </div>
                 <?php endwhile ?>
@@ -82,37 +89,26 @@
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
-                        <li><a href="#">Vestibulum maximus</a></li>
-                        <li><a href="#">Nisi eu lobortis pharetra</a></li>
-                        <li><a href="#">Orci quam accumsan </a></li>
-                        <li><a href="#">Auguen pharetra massa</a></li>
-                        <li><a href="#">Tellus ut nulla</a></li>
-                        <li><a href="#">Etiam egestas viverra </a></li>
-                    </ul>
-                </div>
-                <!-- Single widget -->
-                <div class="widget-item">
-                    <h2 class="widget-title">Instagram</h2>
-                    <ul class="instagram">
-                        <li><img src="<?php echo get_template_directory_uri(); ?>/img/instagram/1.jpg" alt=""></li>
-                        <li><img src="<?php echo get_template_directory_uri(); ?>/img/instagram/2.jpg" alt=""></li>
-                        <li><img src="<?php echo get_template_directory_uri(); ?>/img/instagram/3.jpg" alt=""></li>
-                        <li><img src="<?php echo get_template_directory_uri(); ?>/img/instagram/4.jpg" alt=""></li>
-                        <li><img src="<?php echo get_template_directory_uri(); ?>/img/instagram/5.jpg" alt=""></li>
-                        <li><img src="<?php echo get_template_directory_uri(); ?>/img/instagram/6.jpg" alt=""></li>
+                        <li>
+                            <?php wp_list_categories([
+                                'hide_empty' => 0,
+                                'title_li' => '',
+                                'number' => 6
+                            ]); ?>
+                        </li>
                     </ul>
                 </div>
                 <!-- Single widget -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
-                        <li><a href="">branding</a></li>
-                        <li><a href="">identity</a></li>
-                        <li><a href="">video</a></li>
-                        <li><a href="">design</a></li>
-                        <li><a href="">inspiration</a></li>
-                        <li><a href="">web design</a></li>
-                        <li><a href="">photography</a></li>
+                        <?php
+                        $terms = get_tags();
+                        foreach ($terms as $term) : ?>
+                            <li><a href="<?php echo get_term_link($term); ?>">
+                                    <?= $term->name; ?>
+                                </a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <!-- Single widget -->
