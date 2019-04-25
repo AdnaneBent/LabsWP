@@ -14,7 +14,6 @@ $titreTeam = get_theme_mod('labs-service-team-setting') ?>
             <h2><?= $titreTeam ?></h2>
         </div>
         <div class="row">
-            <!-- single member -->
             <?php
             $args = [
                 'post_type' => 'team',
