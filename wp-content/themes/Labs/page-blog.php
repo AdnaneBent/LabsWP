@@ -8,7 +8,7 @@
         <div class="page-info">
             <h2>Blog</h2>
             <div class="page-links">
-                <a href="#">Home</a>
+                <a href="<?php echo get_site_url(); ?>">Home</a>
                 <span>Blog</span>
             </div>
         </div>
@@ -21,67 +21,47 @@
 <div class="page-section spad">
     <div class="container">
         <div class="row">
+            <?php
+            $args = [
+                'post_type' => 'post',
+                // nous récupérons maintenant la valeur de l'option qui va elle déterminé le nombre à affiché
+                'posts_per_page' => (get_option('nombre_portfolio_home')) ? get_option('nombre_portfolio_home') : 3,
+            ];
+            $query = new WP_Query($args);
+
+            ?>
             <div class="col-md-8 col-sm-7 blog-posts">
+                <?php while ($query->have_posts()) : $query->the_post(); ?>
+                    <!-- Post item -->
+                    <div class="post-item">
+                        <div class="post-thumbnail">
+                            <img src="<?php the_post_thumbnail_url(); ?>" alt="" class="img-fluid">
+                            <div class="post-date">
+                                <h2> <?= get_the_date('d') ?></h2>
+                                <h3>
+                                    <?= get_the_date('F Y') ?>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h2 class="post-title"><?php the_title() ?></h2>
+                            <div class="post-meta">
+                                <?php
+                                $terms = wp_get_post_terms($post->ID, ['post_tag']);
+                                foreach ($terms as $term) : ?>
+                                    <a class="" href="<?php echo get_term_link($term); ?>">
+                                        <?php echo $term->name; ?>
+                                    </a>
+                                <?php endforeach; ?>
+                                <a href="">2 Comments</a>
+                            </div>
+                            <?php the_content() ?>
+                            <a href="blog-post.html" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                <?php endwhile ?>
                 <!-- Post item -->
-                <div class="post-item">
-                    <div class="post-thumbnail">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/blog/blog-2.jpg" alt="">
-                        <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
-                        <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
-                            <a href="">2 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <!-- Post item -->
-                <div class="post-item">
-                    <div class="post-thumbnail">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/blog/blog-1.jpg" alt="">
-                        <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
-                        <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
-                            <a href="">2 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <!-- Post item -->
-                <div class="post-item">
-                    <div class="post-thumbnail">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/blog/blog-3.jpg" alt="">
-                        <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
-                        <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
-                            <a href="">2 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
-                    </div>
-                </div>
+
                 <!-- Pagination -->
                 <div class="page-pagination">
                     <a class="active" href="">01.</a>
