@@ -719,6 +719,13 @@ ul {
 	text-transform: uppercase;
 }
 
+.member h3 p {
+	font-size: 14px;
+	color: #2be6ab;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
 
 /*------------------------
 	Promotion section
