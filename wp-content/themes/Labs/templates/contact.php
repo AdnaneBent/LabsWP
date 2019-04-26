@@ -27,7 +27,8 @@ $mailContact = get_theme_mod('labs-contact-mail-setting');
             </div>
             <!-- contact form -->
             <div class="col-md-6 col-pull">
-                <form id="con_form" class="form-class" action="<?= get_admin_url() . '/?action=send-mail'; ?>" method="post">
+                <form id="con_form" class="form-class" action="<?= admin_url('admin-post.php'); ?>" method="post">
+                    <input type="hidden" name="action" value='send-mail'>
                     <div class="row">
                         <div class="col-sm-6">
                             <input type="text" name="name" placeholder="Your name">

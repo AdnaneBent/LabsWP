@@ -39,6 +39,6 @@ add_action('save_post_' . ServicePostType::$slug, [ServiceIconesMetabox::class, 
 
 add_action('save_post_' . ProjectPostType::$slug, [ProjectIconesMetabox::class, 'save']);
 
-add_action('admin_action_send-mail', [SendMail::class, 'send_mail']);
+add_action('admin_post_send-mail', [SendMail::class, 'send_mail']);
 
-add_action('admin_action_nopriv_send-mail', [SendMail::class, 'send_mail']);
+add_action('admin_post_nopriv_send-mail', [SendMail::class, 'send_mail']);
