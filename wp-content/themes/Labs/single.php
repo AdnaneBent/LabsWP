@@ -59,55 +59,38 @@ get_header();
                             <img src="img/avatar/03.jpg" alt="">
                         </div>
                         <div class="author-info">
-                            <h2>Lore Williams, <span>Author</span></h2>
+                            <h2>Lore Williams, <span>Auteur</span></h2>
                             <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
                         </div>
                     </div>
                     <!-- Post Comments -->
                     <div class="comments">
-                        <h2>Comments (2)</h2>
+                        <h2>Nombre de commentaire <?= get_comments_number($post_id) ?></h2>
                         <ul class="comment-list">
-                            <li>
-                                <div class="avatar">
-                                    <img src="img/avatar/01.jpg" alt="">
-                                </div>
-                                <div class="commetn-text">
-                                    <h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-                                    <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="avatar">
-                                    <img src="img/avatar/02.jpg" alt="">
-                                </div>
-                                <div class="commetn-text">
-                                    <h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-                                    <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
-                                </div>
-                            </li>
+                            <?php $args = array(
+                                'post_id' => get_the_id()
+                            );
+
+                            // The Query
+                            $comments_query = new WP_Comment_Query;
+                            $comments = $comments_query->query($args);
+
+                            foreach ($comments as $comment) : ?>
+                                <li>
+                                    <div class="avatar">
+                                        <?= get_avatar(get_the_author_meta('ID'), 70); ?>
+                                    </div>
+                                    <div class="comment-text">
+                                        <h3><?= $comment->comment_author ?> | <?= comment_date(('d M Y')) ?> | <a href="<?php comment_reply_link($id); ?>">Répondre</a> </h3>
+                                        <p><?= $comment->comment_content ?> </p>
+                                    </div>
+
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
-                    <!-- Commert Form -->
-                    <div class="row">
-                        <div class="col-md-9 comment-from">
-                            <h2>Leave a comment</h2>
-                            <form class="form-class">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input type="text" name="name" placeholder="Your name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" name="email" placeholder="Your email">
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <input type="text" name="subject" placeholder="Subject">
-                                        <textarea name="message" placeholder="Message"></textarea>
-                                        <button class="site-btn">send</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+
+                    <?php if (is_single()) comments_template(''); ?>
                 </div>
             </div>
             <!-- Sidebar area -->
