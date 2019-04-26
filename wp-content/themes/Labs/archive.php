@@ -6,11 +6,11 @@ get_header();
 ?>
 
 <div class="container single-post-container">
-    <h1>
+    <h1 style='margin:100px;'>
         <?php the_archive_title(); ?>
     </h1>
 
-    <ul style='margin-top:50px;' class="list-group">
+    <ul style='margin:100px;' class="list-group">
         <!-- Dans cette boucle nous allons récupérer tout les post qui correspondent à la recherche -->
         <?php while (have_posts()) : the_post(); ?>
             <li class="list-group-item">

@@ -114,10 +114,7 @@ get_header();
             <div class="col-md-4 col-sm-5 sidebar">
                 <!-- Single widget -->
                 <div class="widget-item">
-                    <form action="#" class="search-form">
-                        <input type="text" placeholder="Search">
-                        <button class="search-btn"><i class="flaticon-026-search"></i></button>
-                    </form>
+                    <?php get_search_form(); ?>
                 </div>
                 <!-- Single widget -->
                 <div class="widget-item">

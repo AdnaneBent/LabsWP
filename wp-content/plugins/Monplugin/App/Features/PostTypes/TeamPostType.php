@@ -29,7 +29,7 @@ class TeamPostType
                     'search_items' => __('Rechercher les membres de la team'),
                     'not_found' => __('Pas de membre de la team trouvées.'),
                     'not_found_in_trash' => ('Pas de membre de la team dans la corbeille.'),
-                    'all_items' => __('Tout les membres de la teams'),
+                    'all_items' => __('Tous les membres de la team'),
                     'archives' => __('teams archivées'),
                     'filter_items_list' => __('Filtre des membres'),
                     'items_list_navigation' => __('Navigation team'),
