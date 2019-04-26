@@ -27,7 +27,9 @@
             $args = [
                 'post_type' => 'service',
                 'posts_per_page' => 9,
+                'paged' => $paged
             ];
+            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $query = new WP_Query($args);
             ?>
             <?php while ($query->have_posts()) : $query->the_post(); ?>
@@ -46,7 +48,14 @@
             <?php endwhile ?>
         </div>
         <div class="text-center">
-            <a href="" class="site-btn">Browse</a>
+            <?php
+            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
+            <?= paginate_links([
+                'format' => '?paged=%#%',
+                'current' => $paged,
+                'total' => $query->max_num_pages,
+
+            ]); ?>
         </div>
     </div>
 </div>

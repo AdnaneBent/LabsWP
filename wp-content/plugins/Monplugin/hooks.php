@@ -9,6 +9,9 @@ use App\Features\Taxonomies\TeamTaxonomy;
 use App\Features\PostTypes\ProjectPostType;
 use App\Features\Taxonomies\ProjectTaxonomy;
 use App\Features\MetaBoxes\ProjectIconesMetabox;
+use App\Features\Pages\SendMail;
+use App\Database\Database;
+
 
 
 
@@ -35,3 +38,7 @@ add_action('add_meta_boxes_service', [ServiceIconesMetabox::class, 'add_meta_box
 add_action('save_post_' . ServicePostType::$slug, [ServiceIconesMetabox::class, 'save']);
 
 add_action('save_post_' . ProjectPostType::$slug, [ProjectIconesMetabox::class, 'save']);
+
+add_action('admin_action_send-mail', [SendMail::class, 'send_mail']);
+
+add_action('admin_action_nopriv_send-mail', [SendMail::class, 'send_mail']);

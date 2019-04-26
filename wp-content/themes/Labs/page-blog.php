@@ -26,7 +26,9 @@
                 'post_type' => 'post',
                 // nous récupérons maintenant la valeur de l'option qui va elle déterminé le nombre à affiché
                 'posts_per_page' => (get_option('nombre_portfolio_home')) ? get_option('nombre_portfolio_home') : 3,
+                'paged' => $paged
             ];
+            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $query = new WP_Query($args);
 
             ?>
@@ -71,9 +73,13 @@
 
                 <!-- Pagination -->
                 <div class="page-pagination">
-                    <a class="active" href="">01.</a>
-                    <a href="">02.</a>
-                    <a href="">03.</a>
+                    <a class="active" href="">
+                        <?= paginate_links([
+                            'format' => '?paged=%#%',
+                            'current' => $paged,
+                            'total' => $query->max_num_pages,
+                            'type' => 'active'
+                        ]); ?></a>
                 </div>
             </div>
             <!-- Sidebar area -->
