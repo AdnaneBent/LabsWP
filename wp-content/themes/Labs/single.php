@@ -4,6 +4,9 @@ get_header();
 
 ?>
 
+<?php
+$quoteblog = get_theme_mod('labs-quote-pBlog-setting'); ?>
+
 <!-- Page header -->
 <div class="page-top-section">
     <div class="overlay"></div>
@@ -25,34 +28,34 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
-                <!-- Single Post -->
-                <div class="single-post">
-                    <div class="post-thumbnail">
-                        <img src="<?php the_post_thumbnail_url(); ?>" alt="" class="img-fluid">
-                        <div class="post-date">
-                            <h2> <?= get_the_date('d') ?></h2>
-                            <h3>
-                                <?= get_the_date('F Y') ?>
-                            </h3>
+                <?php while (have_posts()) : the_post(); ?>
+                    <!-- Single Post -->
+                    <div class="single-post">
+                        <div class="post-thumbnail">
+                            <img src="<?php the_post_thumbnail_url(); ?>" alt="" class="img-fluid">
+                            <div class="post-date">
+                                <h2> <?= get_the_date('d') ?></h2>
+                                <h3>
+                                    <?= get_the_date('F Y') ?>
+                                </h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title"><?php the_title() ?></h2>
-                        <div class="post-meta">
-                            <?php
-                            $terms = wp_get_post_terms($post->ID, ['post_tag']);
-                            foreach ($terms as $term) : ?>
-                                <a class="" href="<?php echo get_term_link($term); ?>">
-                                    <?php echo $term->name; ?>
-                                </a>
-                            <?php endforeach; ?>
+                        <div class="post-content">
+                            <h2 class="post-title"><?php the_title() ?></h2>
+                            <div class="post-meta">
+                                <?php
+                                $terms = wp_get_post_terms($post->ID, ['post_tag']);
+                                foreach ($terms as $term) : ?>
+                                    <a class="" href="<?php echo get_term_link($term); ?>">
+                                        <?php echo $term->name; ?>
+                                    </a>
+                                <?php endforeach; ?>
 
-                            <a href="">2 Comments</a>
+                                <a href=""> <?= get_comments_number($post_id) ?> commentaire</a>
+                            </div>
+                            <?= the_content() ?>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo, justo ipsum rutrum mauris, sit amet egestas metus quam sed dolor. Sed consectetur, dui sed sollicitudin eleifend, arcu neque egestas lectus, sagittis viverra justo massa ut sapien. Aenean viverra ornare mauris eget lobortis. Cras vulputate elementum magna, tincidunt pharetra erat condimentum sit amet. Maecenas vitae ligula pretium, convallis magna eu, ultricies quam. In hac habitasse platea dictumst. </p>
-                        <p>Fusce vel tempus nunc. Phasellus et risus eget sapien suscipit efficitur. Suspendisse iaculis purus ornare urna egestas imperdiet. Nulla congue consectetur placerat. Integer sit amet auctor justo. Pellentesque vel congue velit. Sed ullamcorper lacus scelerisque condimentum convallis. Sed ac mollis sem. </p>
-                    </div>
+                    <?php endwhile ?>
                     <!-- Post Author -->
                     <div class="author">
                         <div class="avatar">
@@ -117,7 +120,7 @@ get_header();
                     <h2 class="widget-title">Quote</h2>
                     <div class="quote">
                         <span class="quotation">‘​‌‘​‌</span>
-                        <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
+                        <p><?= $quoteblog ?></p>
                     </div>
                 </div>
                 <!-- Single widget -->

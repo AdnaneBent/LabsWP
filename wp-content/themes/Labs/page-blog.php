@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
+<?php
+$quoteblog = get_theme_mod('labs-quote-pBlog-setting'); ?>
+
 
 <!-- Page header -->
 <div class="page-top-section">
@@ -62,7 +65,7 @@
                                         <?php echo $term->name; ?>
                                     </a>
                                 <?php endforeach; ?>
-                                <a href="">2 Comments</a>
+                                <a href=""> <?= get_comments_number($post_id) ?> commentaire</a>
                             </div>
                             <?php the_content() ?>
                             <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
@@ -119,7 +122,7 @@
                     <h2 class="widget-title">Quote</h2>
                     <div class="quote">
                         <span class="quotation">‘​‌‘​‌</span>
-                        <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
+                        <p><?= $quoteblog ?></p>
                     </div>
                 </div>
                 <!-- Single widget -->
@@ -135,27 +138,9 @@
 </div>
 <!-- page section end-->
 
-
-<!-- newsletter section -->
-<div class="newsletter-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h2>Newsletter</h2>
-            </div>
-            <div class="col-md-9">
-                <!-- newsletter form -->
-                <form class="nl-form">
-                    <input type="text" placeholder="Your e-mail here">
-                    <button class="site-btn btn-2">Newsletter</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- newsletter section end-->
-
 <?php
+get_template_part('templates/newsletter');
+
 get_template_part('templates/contact');
 
 get_footer();

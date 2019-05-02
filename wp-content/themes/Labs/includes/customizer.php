@@ -340,6 +340,15 @@ function ajout_personnalisation_titre($wp_customize)
 
     // FIn panel pour page service
 
+    // panel page blog
+
+    $wp_customize->add_panel('labs-panel-pBlog', [
+        'title' => __('La citation page blog'),
+        'Description' => __('Personnalisation de la citation de la page blog')
+    ]);
+
+    // FIn panel pour page blog
+
     // Les SECTIONS //
 
     // section testimonial titre
@@ -392,6 +401,16 @@ function ajout_personnalisation_titre($wp_customize)
     ]);
 
     // Fin section titre page service
+
+    // Section titre page service
+
+    $wp_customize->add_section('labs-quote-pBlog', [
+        'panel' => 'labs-panel-pBlog',
+        'title' => __('La citation'),
+        'description' => __('Personnalisez la citation')
+    ]);
+
+    // Fin section titre page service  
 
     // FIN des SECTIONS //
 
@@ -459,8 +478,16 @@ function ajout_personnalisation_titre($wp_customize)
         'sanitize_callback' => 'sanitize_text_field',
     ]);
 
-
     // Fin settings titre page service (projet phone)
+
+    // Settings quote page blog
+
+    $wp_customize->add_setting('labs-quote-pBlog-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    // Fin settings quote page blog
 
     // Settings 
 
@@ -556,6 +583,18 @@ function ajout_personnalisation_titre($wp_customize)
     ]);
 
     // Fin control titre page service (projetphone)
+
+    // Control quote page blog
+
+    $wp_customize->add_control('labs-quote-pBlog-control', [
+        'section' => 'labs-quote-pBlog',
+        'settings' => 'labs-quote-pBlog-setting',
+        'label' => __('changer la citation'),
+        'description' => __('Personnalisez la citation'),
+        'type' => 'textarea'
+    ]);
+
+    // Fin control quote page blog
 
     // FIN CONTROLS //
 

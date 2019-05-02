@@ -10,6 +10,7 @@ use App\Features\PostTypes\ProjectPostType;
 use App\Features\Taxonomies\ProjectTaxonomy;
 use App\Features\MetaBoxes\ProjectIconesMetabox;
 use App\Features\Pages\SendMail;
+use App\Features\Pages\SendNewsletter;
 
 
 
@@ -42,3 +43,7 @@ add_action('save_post_' . ProjectPostType::$slug, [ProjectIconesMetabox::class, 
 add_action('admin_post_send-mail', [SendMail::class, 'send_mail']);
 
 add_action('admin_post_nopriv_send-mail', [SendMail::class, 'send_mail']);
+
+add_action('admin_post_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
+
+add_action('admin_post_nopriv_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
