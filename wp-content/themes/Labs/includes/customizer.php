@@ -331,6 +331,15 @@ function ajout_personnalisation_titre($wp_customize)
     ]);
     // fin panel about
 
+    // panel page service
+
+    $wp_customize->add_panel('labs-panel-titre-pService', [
+        'title' => __('Les titres page service'),
+        'Description' => __('Personnalisation des titres de la page service')
+    ]);
+
+    // FIn panel pour page service
+
     // Les SECTIONS //
 
     // section testimonial titre
@@ -373,6 +382,16 @@ function ajout_personnalisation_titre($wp_customize)
     ]);
 
     // Fin section Stand Out
+
+    // Section titre page service
+
+    $wp_customize->add_section('labs-service-titre-pService', [
+        'panel' => 'labs-panel-titre-pService',
+        'title' => __('Les titres'),
+        'description' => __('Personnalisez les titres de la page service')
+    ]);
+
+    // Fin section titre page service
 
     // FIN des SECTIONS //
 
@@ -423,6 +442,27 @@ function ajout_personnalisation_titre($wp_customize)
     ]);
 
     // Fin Setting Stand Out
+
+    // Settings titre page service
+
+    $wp_customize->add_setting('labs-titre-pService-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    // Fin setting titre page service
+
+    // Settings titre page service (projet phone)
+
+    $wp_customize->add_setting('labs-titre-pService-phone-setting', [
+        'type' => 'theme_mod',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+
+    // Fin settings titre page service (projet phone)
+
+    // Settings 
 
     // FIN des SETTINGS //
 
@@ -492,6 +532,30 @@ function ajout_personnalisation_titre($wp_customize)
     ]);
 
     // Fin control Stand Out
+
+    // Control titre page service (service)
+
+    $wp_customize->add_control('labs-titre-pService-control', [
+        'section' => 'labs-service-titre-pService',
+        'settings' => 'labs-titre-pService-setting',
+        'label' => __('Titre des services'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+    // Fin control titre page service (service)
+
+    // Control titre page service (projetphone)
+
+    $wp_customize->add_control('labs-titre-pService-phone-control', [
+        'section' => 'labs-service-titre-pService',
+        'settings' => 'labs-titre-pService-phone-setting',
+        'label' => __('Titre des projets'),
+        'description' => __('Personnalisez le titre'),
+        'type' => 'input'
+    ]);
+
+    // Fin control titre page service (projetphone)
 
     // FIN CONTROLS //
 

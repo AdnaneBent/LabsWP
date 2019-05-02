@@ -10,7 +10,7 @@ use App\Features\PostTypes\ProjectPostType;
 use App\Features\Taxonomies\ProjectTaxonomy;
 use App\Features\MetaBoxes\ProjectIconesMetabox;
 use App\Features\Pages\SendMail;
-use App\Database\Database;
+
 
 
 

@@ -1,5 +1,12 @@
 <?php get_header(); ?>
 
+<?php
+
+$titreservice = get_theme_mod('labs-titre-pService-setting');
+$titreprojet = get_theme_mod('labs-titre-pService-phone-setting');
+
+?>
+
 <!-- Page header -->
 <div class="page-top-section">
     <div class="overlay"></div>
@@ -20,7 +27,12 @@
 <div class="services-section spad">
     <div class="container">
         <div class="section-title dark">
-            <h2>Get in <span>the Lab</span> and see the services</h2>
+            <?php
+            $titreservice = get_theme_mod('labs-titre-pService-setting', __('Get in <span>The Lab</span> and discover the world'));
+            $titreservice = str_replace('[', '<span>', $titreservice);
+            $titreservice = str_replace(']', '</span>', $titreservice);
+            ?>
+            <h2> <?= $titreservice ?></h2>
         </div>
         <div class="row">
             <?php
@@ -67,7 +79,12 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="section-title">
-            <h2>Get in <span>the Lab</span> and discover the world</h2>
+            <?php
+            $titreprojet = get_theme_mod('labs-titre-pService-phone-setting', __('Get in <span>The Lab</span> and discover the world'));
+            $titreprojet = str_replace('[', '<span>', $titreprojet);
+            $titreprojet = str_replace(']', '</span>', $titreprojet);
+            ?>
+            <h2><?= $titreprojet ?></h2>
         </div>
         <div class="row">
             <!-- feature item -->
