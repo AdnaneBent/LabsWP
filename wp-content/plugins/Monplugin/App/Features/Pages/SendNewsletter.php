@@ -34,6 +34,18 @@ class SendNewsletter
             ]
         );
 
+        if (wp_mail($email, ''  . '', $mail, $header)) {
+            $_SESSION['notice2'] = [
+                'status' => 'success',
+                'message' => 'Vous êtes bien inscris à notre newsletter'
+            ];
+        } else {
+            $_SESSION['notice2'] = [
+                'status' => 'errors',
+                'message' => 'Veuillez entrez une adresse mail'
+            ];
+        }
+
         wp_mail($email, '', $mail, $header);
         // la fonction wp_safe_redirect redirige vers une url. La fonction wp_get_referer renvoi vers la page d'ou la requête a été envoyé.
         wp_safe_redirect(wp_get_referer());

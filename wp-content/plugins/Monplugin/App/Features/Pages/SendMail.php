@@ -54,7 +54,7 @@ class SendMail
             ];
         } else {
             $_SESSION['notice'] = [
-                'status' => 'error',
+                'status' => 'danger',
                 'message' => 'Une erreur est survenu, veuillez réessayer plus tard'
             ];
         }
