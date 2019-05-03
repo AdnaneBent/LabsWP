@@ -34,7 +34,7 @@
 <body>
     <section class="container">
         <h1>
-            Bonjour <?= $name . ' ' . $firstname ?>
+            Bonjour <?= $name . ' ' . $subject ?>
         </h1>
         <p>
             <?= $message ?>

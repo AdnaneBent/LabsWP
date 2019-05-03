@@ -11,6 +11,7 @@ use App\Features\Taxonomies\ProjectTaxonomy;
 use App\Features\MetaBoxes\ProjectIconesMetabox;
 use App\Features\Pages\SendMail;
 use App\Features\Pages\SendNewsletter;
+use App\Setup;
 
 
 
@@ -47,3 +48,5 @@ add_action('admin_post_nopriv_send-mail', [SendMail::class, 'send_mail']);
 add_action('admin_post_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
 
 add_action('admin_post_nopriv_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
+
+add_action('init', [Setup::class, 'start_session']);

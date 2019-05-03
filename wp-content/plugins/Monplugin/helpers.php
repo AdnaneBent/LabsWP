@@ -34,6 +34,14 @@ function extract_data_attr(string $key, array $data)
 }
 
 
+function post_data($key, $data)
+{
+    if (array_key_exists($key, $data)) {
+        return sanitize_text_field($data[$key]);
+    }
+    return '';
+}
+
 // On créer un helper qui fait plus au moins comme notre autre helper view mais avec nos functon ob_start() et ob_het_clean() on retourne ce qu'a traité ob_get_clean
 function mail_template($path, $data = array())
 {

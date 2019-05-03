@@ -11,7 +11,7 @@ $mailContact = get_theme_mod('labs-contact-mail-setting');
 
 
 <!-- Contact section -->
-<div class="contact-section spad fix">
+<div class="contact-section spad fix" id="contact">
     <div class="container">
         <div class="row">
             <!-- contact info -->
@@ -27,6 +27,9 @@ $mailContact = get_theme_mod('labs-contact-mail-setting');
             </div>
             <!-- contact form -->
             <div class="col-md-6 col-pull">
+
+                <?php view('partials/notice'); ?>
+
                 <form id="con_form" class="form-class" action="<?= admin_url('admin-post.php'); ?>" method="post">
                     <input type="hidden" name="action" value='send-mail'>
                     <div class="row">
