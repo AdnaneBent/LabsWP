@@ -38,7 +38,7 @@ $titreService = get_theme_mod('labs-service-titre-setting')
             <?php endwhile ?>
         </div>
         <div class="text-center">
-            <a href="" class="site-btn">Browse</a>
+            <a href="http://localhost:8080/service#serv" class="site-btn">Browse</a>
         </div>
     </div>
 </div>

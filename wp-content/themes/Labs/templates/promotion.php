@@ -20,7 +20,7 @@ $boutonStand = get_theme_mod('labs-stand-bouton-setting');
             </div>
             <div class="col-md-3">
                 <div class="promo-btn-area">
-                    <a href="" class="site-btn btn-2"><?= $boutonStand ?></a>
+                    <a href="http://localhost:8080/blog/" class="site-btn btn-2"><?= $boutonStand ?></a>
                 </div>
             </div>
         </div>

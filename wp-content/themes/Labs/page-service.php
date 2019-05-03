@@ -26,7 +26,7 @@ $titreprojet = get_theme_mod('labs-titre-pService-phone-setting');
 <!-- services section -->
 <div class="services-section spad">
     <div class="container">
-        <div class="section-title dark">
+        <div id="serv" class="section-title dark">
             <?php
             $titreservice = get_theme_mod('labs-titre-pService-setting', __('Get in <span>The Lab</span> and discover the world'));
             $titreservice = str_replace('[', '<span>', $titreservice);
@@ -140,7 +140,7 @@ $titreprojet = get_theme_mod('labs-titre-pService-phone-setting');
             </div>
         </div>
         <div class="text-center mt100">
-            <a href="" class="site-btn">Browse</a>
+            <a href="#projet" class="site-btn">Browse</a>
         </div>
     </div>
 </div>
@@ -148,7 +148,7 @@ $titreprojet = get_theme_mod('labs-titre-pService-phone-setting');
 
 
 <!-- services card section-->
-<div class="services-card-section spad">
+<div class="services-card-section spad" id="projet">
     <div class="container">
         <div class="row">
             <?php
