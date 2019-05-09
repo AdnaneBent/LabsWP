@@ -10,7 +10,11 @@ class SendMail
      * Initialisation de la page.
      *
      * @return void
+     * 
+     * 
      */
+
+
 
     public static function send_mail()
     {
@@ -58,6 +62,7 @@ class SendMail
                 'message' => 'Une erreur est survenu, veuillez réessayer plus tard'
             ];
         }
+
         // la fonction wp_safe_redirect redirige vers une url. La fonction wp_get_referer renvoi vers la page d'ou la requête a été envoyé.
         wp_safe_redirect(wp_get_referer());
     }

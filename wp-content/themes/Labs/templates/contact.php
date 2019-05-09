@@ -33,15 +33,16 @@ $mailContact = get_theme_mod('labs-contact-mail-setting');
                 <form id="con_form" class="form-class" action="<?= admin_url('admin-post.php'); ?>#contact" method="post">
                     <input type="hidden" name="action" value='send-mail'>
                     <div class="row">
+                        <?php $old = isset($_SESSION['old']) ? $_SESSION['old'] : ''; ?>
                         <div class="col-sm-6">
-                            <input type="text" name="name" placeholder="Your name">
+                            <input type="text" name="name" placeholder="Your name" value="<?= isset($old['name']) ? $old['name'] : '' ?>">
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" name="email" placeholder="Your email">
+                            <input type="text" name="email" placeholder="Your email" value="<?= isset($old['email']) ? $old['email'] : '' ?>">
                         </div>
                         <div class="col-sm-12">
-                            <input type="text" name="subject" placeholder="Subject">
-                            <textarea name="message" placeholder="Message"></textarea>
+                            <input type="text" name="subject" placeholder="Subject" value="<?= isset($old['subject']) ? $old['subject'] : '' ?>">
+                            <textarea name="message" placeholder="Message" value="<?= isset($old['message']) ? $old['message'] : '' ?>"></textarea>
                             <button class="site-btn">Envoyé</button>
                         </div>
                     </div>
