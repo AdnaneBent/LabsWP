@@ -9,17 +9,88 @@ get_header();
     <h1 style='margin:100px;'>
         <?php the_archive_title(); ?>
     </h1>
-
-    <ul style='margin:100px;' class="list-group">
-        <!-- Dans cette boucle nous allons récupérer tout les post qui correspondent à la recherche -->
-        <?php while (have_posts()) : the_post(); ?>
-            <li class="list-group-item">
-                <a href="<?php the_permalink(); ?>">
-                    <?php the_title(); ?>
-                </a> </li>
-        <?php endwhile; ?>
-    </ul>
+    <!-- page section -->
+    <div class="page-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-7 blog-posts">
+                    <?php while (have_posts()) : the_post(); ?>
+                        <!-- Post item -->
+                        <div class="post-item">
+                            <div class="post-thumbnail">
+                                <img src="<?php the_post_thumbnail_url(); ?>" alt="" class="img-fluid">
+                                <div class="post-date">
+                                    <h2> <?= get_the_date('d') ?></h2>
+                                    <h3>
+                                        <?= get_the_date('F Y') ?>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h2 class="post-title"><?php the_title() ?></h2>
+                                <div class="post-meta">
+                                    <?php
+                                    $terms = wp_get_post_terms($post->ID, ['post_tag']);
+                                    foreach ($terms as $term) : ?>
+                                        <a class="" href="<?php echo get_term_link($term); ?>">
+                                            <?= $term->name; ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                    <?php
+                                    $terms = wp_get_post_terms($post->ID, ['category']);
+                                    foreach ($terms as $term) : ?>
+                                        <a class="" href="<?php echo get_term_link($term); ?>">
+                                            <?php echo $term->name; ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                    <a href=""> <?= get_comments_number($post_id) ?> commentaire</a>
+                                </div>
+                                <?php the_content() ?>
+                                <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                    <?php endwhile ?>
+                    <!-- Post item -->
+                </div>
+                <!-- Sidebar area -->
+                <div class="col-md-4 col-sm-5 sidebar">
+                    <!-- Single widget -->
+                    <div class="widget-item">
+                        <?php get_search_form(); ?>
+                    </div>
+                    <!-- Single widget -->
+                    <div class="widget-item">
+                        <h2 class="widget-title">Categories</h2>
+                        <ul>
+                            <li>
+                                <?php wp_list_categories([
+                                    'hide_empty' => 1,
+                                    'title_li' => '',
+                                    'number' => 6
+                                ]); ?>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Single widget -->
+                    <div class="widget-item">
+                        <h2 class="widget-title">Tags</h2>
+                        <ul class="tag">
+                            <?php
+                            $terms = get_tags();
+                            foreach ($terms as $term) : ?>
+                                <li><a href="<?php echo get_term_link($term); ?>">
+                                        <?= $term->name; ?>
+                                    </a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page section end-->
 </div>
+
 <?php
 
 get_footer();
