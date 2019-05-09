@@ -97,7 +97,7 @@ $quoteblog = get_theme_mod('labs-quote-pBlog-setting'); ?>
                     <ul>
                         <li>
                             <?php wp_list_categories([
-                                'hide_empty' => 0,
+                                'hide_empty' => 1,
                                 'title_li' => '',
                                 'number' => 6
                             ]); ?>
