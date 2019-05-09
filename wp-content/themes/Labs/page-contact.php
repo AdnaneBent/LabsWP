@@ -6,7 +6,7 @@
         <div class="page-info">
             <h2>Contact</h2>
             <div class="page-links">
-                <a href="#">Home</a>
+                <a href="<?php echo get_site_url(); ?>">Home</a>
                 <span>Contact</span>
             </div>
         </div>
@@ -16,7 +16,9 @@
 
 
 <!-- Google map -->
-<div class="map" id="map-area"></div>
+<div class="map" id="map-area">
+    <iframe src="https://maps.google.com/map?q=<?= urlencode(get_theme_mod('adresse_map')) ?>" frameborder="0"></iframe>
+</div>
 
 
 <?php

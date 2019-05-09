@@ -51,7 +51,7 @@ $quoteblog = get_theme_mod('labs-quote-pBlog-setting'); ?>
                                     </a>
                                 <?php endforeach; ?>
 
-                                <a href=""> <?= get_comments_number($post_id) ?> commentaire</a>
+                                <a href="#comment"> <?= get_comments_number($post_id) ?> commentaire</a>
                             </div>
                             <?= the_content() ?>
                         </div>
@@ -62,12 +62,12 @@ $quoteblog = get_theme_mod('labs-quote-pBlog-setting'); ?>
                             <img src="img/avatar/03.jpg" alt="">
                         </div>
                         <div class="author-info">
-                            <h2>Lore Williams, <span>Auteur</span></h2>
+                            <h2><?php the_author() ?> <span>Auteur</span></h2>
                             <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
                         </div>
                     </div>
                     <!-- Post Comments -->
-                    <div class="comments">
+                    <div id="comment" class="comments">
                         <h2>Nombre de commentaire <?= get_comments_number($post_id) ?></h2>
                         <ul class="comment-list">
                             <?php $args = array(
@@ -84,8 +84,8 @@ $quoteblog = get_theme_mod('labs-quote-pBlog-setting'); ?>
                                         <?= get_avatar(get_the_author_meta('ID'), 70); ?>
                                     </div>
                                     <div class="comment-text">
-                                        <h3><?= $comment->comment_author ?> | <?= comment_date(('d M Y')) ?> | <a href="<?php comment_reply_link($id); ?>">Répondre</a> </h3>
-                                        <p><?= $comment->comment_content ?> </p>
+                                        <h3><?= $comment->comment_author ?> | <?= comment_date(('d M Y')) ?> </h3>
+                                        <p style="margin-top:20px;"><?= $comment->comment_content ?> </p>
                                     </div>
 
                                 </li>
@@ -137,27 +137,9 @@ $quoteblog = get_theme_mod('labs-quote-pBlog-setting'); ?>
 <!-- page section end-->
 
 
-<!-- newsletter section -->
-<div class="newsletter-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h2>Newsletter</h2>
-            </div>
-            <div class="col-md-9">
-                <!-- newsletter form -->
-                <form class="nl-form">
-                    <input type="text" placeholder="Your e-mail here">
-                    <button class="site-btn btn-2">Newsletter</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- newsletter section end-->
 
 <?php
-
+get_template_part('templates/newsletter');
 get_template_part('templates/contact');
 get_footer();
 
