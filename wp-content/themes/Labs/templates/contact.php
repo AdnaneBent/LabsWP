@@ -11,7 +11,7 @@ $mailContact = get_theme_mod('labs-contact-mail-setting');
 
 
 <!-- Contact section -->
-<div class="contact-section spad fix" id="contact">
+<div class="contact-section spad fix" id="contactform">
     <div class="container">
         <div class="row">
             <!-- contact info -->
@@ -30,7 +30,7 @@ $mailContact = get_theme_mod('labs-contact-mail-setting');
 
                 <?php view('partials/notice'); ?>
 
-                <form id="con_form" class="form-class" action="<?= admin_url('admin-post.php'); ?>#contact" method="post">
+                <form id="con_form" class="form-class" action="<?= admin_url('admin-post.php'); ?>#contactform" method="post">
                     <input type="hidden" name="action" value='send-mail'>
                     <div class="row">
                         <?php $old = isset($_SESSION['old']) ? $_SESSION['old'] : ''; ?>

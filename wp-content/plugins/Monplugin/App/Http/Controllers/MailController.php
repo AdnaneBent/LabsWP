@@ -1,24 +1,13 @@
 <?php
-namespace App\Features\Pages;
+namespace App\Http\Controllers;
 
 use App\Http\Requests\Request;
+use App\Http\Models\Mail;
 
-
-class SendMail
+class MailController
 {
-    /**
-     * Initialisation de la page.
-     *
-     * @return void
-     * 
-     * 
-     */
-
-
-
-    public static function send_mail()
+    public static function send()
     {
-
         Request::validation([
             'name' => 'required',
             'subject' => 'required',
@@ -32,26 +21,19 @@ class SendMail
         $message = sanitize_textarea_field($_POST['message']);
         $header = 'Content-Type: text/html; charset=UTF-8';
 
-
-        // on à remplacé notre pavé par un helper qui le contient et on le stock dans une variable qu'on passe à notre wp_mail.
         $mail = mail_template('pages/template-mail', compact('name', 'subject', 'message'));
-        // Nous allons également sauvegarder en base de donnée les mails que nous avons envoyé.
-        global $wpdb;
-        // Création nouvelle table
-        $wpdb->insert(
-            $wpdb->prefix . 'rat_mail', // premier argument est le nom de la table 
-            [ // Deuxième paramêtre est un tableau dont la clé est le nom de la colonne dans la table et la valeur est la valeur à mettre dans la colonne
-                // Colonne => Valeur
-                'userid' => get_current_user_id(),
-                'lastname' => $name,
-                'subject' => $subject,
-                'email' => $email,
-                'content' => $message,
-                'created_at' => current_time('mysql')
-            ]
-        );
 
-        if (wp_mail($email, 'Pour ' . $name . ' ', $mail, $header)) {
+        // Nous allons également sauvegarder en base de donnée les mails que nous avons envoyé.
+        $mail = new Mail();
+        $mail->userid = get_current_user_id();
+        $mail->lastname = $name;
+        $mail->subject = $subject;
+        $mail->email = $email;
+        $mail->content = $message;
+        // Sauvegarde du mail dans la base de donnée
+        $mail->save();
+
+        if (wp_mail($email, 'Pour ' . $name . ' ', $message, $header)) {
             $_SESSION['notice'] = [
                 'status' => 'success',
                 'message' => 'votre e-mail a bien été envoyé'

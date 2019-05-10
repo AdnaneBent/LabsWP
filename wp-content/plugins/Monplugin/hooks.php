@@ -9,9 +9,10 @@ use App\Features\Taxonomies\TeamTaxonomy;
 use App\Features\PostTypes\ProjectPostType;
 use App\Features\Taxonomies\ProjectTaxonomy;
 use App\Features\MetaBoxes\ProjectIconesMetabox;
-use App\Features\Pages\SendMail;
+use App\Http\Controllers\MailController;
 use App\Features\Pages\SendNewsletter;
 use App\Setup;
+use App\Databases\Database;
 
 
 
@@ -41,12 +42,14 @@ add_action('save_post_' . ServicePostType::$slug, [ServiceIconesMetabox::class, 
 
 add_action('save_post_' . ProjectPostType::$slug, [ProjectIconesMetabox::class, 'save']);
 
-add_action('admin_post_send-mail', [SendMail::class, 'send_mail']);
+add_action('admin_post_send-mail', [MailController::class, 'send']);
 
-add_action('admin_post_nopriv_send-mail', [SendMail::class, 'send_mail']);
+add_action('admin_post_nopriv_send-mail', [MailController::class, 'send']);
 
 add_action('admin_post_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
 
 add_action('admin_post_nopriv_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
 
 add_action('init', [Setup::class, 'start_session']);
+
+register_activation_hook(__DIR__ . '/Monplugin.php', [Database::class, 'init']);
