@@ -1,6 +1,8 @@
 <?php
 namespace App\Features\Pages;
 
+use App\Http\Requests\Request;
+use App\Http\Models\Newsletter;
 
 
 class SendNewsletter
@@ -13,32 +15,21 @@ class SendNewsletter
 
     public static function send_newsletter()
     {
+
         // Nous récupérons les données envoyé par le formulaire qui se retrouve dans la variable $_POST
         $email = $_POST['emailNew'];
-        $header = 'Content-Type: text/html; charset=UTF-8';
 
 
-        // on à remplacé notre pavé par un helper qui le contient et on le stock dans une variable qu'on passe à notre wp_mail.
-        $mail = mail_template('pages/template-newsletter');
-
-        // Nous allons également sauvegarder en base de donnée les mails que nous avons envoyé.
-        global $wpdb;
-        // Nous utilisons une fonction pour insérer dans la db. https://developer.wordpress.org/reference/classes/wpdb/insert/
-        $wpdb->insert(
-            $wpdb->prefix . 'rat_newsletter', // premier argument est le nom de la table 
-            [ // Deuxième paramêtre est un tableau dont la clé est le nom de la colonne dans la table et la valeur est la valeur à mettre dans la colonne
-                // Colonne => Valeur
-                'userid' => get_current_user_id(),
-                'email' => $email,
-                'created_at' => current_time('mysql')
-            ]
-        );
-
-        if (wp_mail($email, ''  . '', $mail, $header)) {
+        if (wp_mail($email, ''  . '', 'Vous êtes bien inscris à la newsletter')) {
             $_SESSION['notice2'] = [
                 'status' => 'success',
                 'message' => 'Vous êtes bien inscris à notre newsletter'
             ];
+            $news = new Newsletter();
+            $news->userid = get_current_user_id();
+            $news->email = $email;
+
+            $news->save();
         } else {
             $_SESSION['notice2'] = [
                 'status' => 'errors',

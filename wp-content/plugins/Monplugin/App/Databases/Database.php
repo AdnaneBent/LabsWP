@@ -2,6 +2,7 @@
 namespace App\Databases;
 
 use App\Databases\Migrations\CreateMailTable;
+use App\Databases\Migrations\CreateNewsletterTable;
 
 class Database
 {
@@ -23,5 +24,6 @@ class Database
     public static function migration()
     {
         CreateMailTable::up();
+        CreateNewsletterTable::up();
     }
 }

@@ -26,7 +26,7 @@ class Request
                 $message .= $value . '<br>';
             }
             $_SESSION['notice'] = [
-                'status' => 'errors',
+                'status' => 'danger',
                 'message' => $message
             ];
 
@@ -38,6 +38,7 @@ class Request
             exit;
         }
     }
+
 
     /**
      * Vérification que l'input est bien défini
