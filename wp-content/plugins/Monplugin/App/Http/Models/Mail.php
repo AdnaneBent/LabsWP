@@ -46,7 +46,8 @@ class Mail
         );
     }
 
-    // On créer une function qui récupère tous les mails qui ont été enregistré dans la base de donnée,on créer plus haut ligne 16 de ce fichier une variable dans le quel on stock le nom de la table qui contient les mails, ce nom de table on l'avait défini quelques commits plus tot ligne 35 de ce fichier.
+    //   fonction pour récupéré tous les mails dans la base de données
+
     public static function all()
     {
         global $wpdb;

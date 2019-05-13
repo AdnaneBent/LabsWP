@@ -12,13 +12,9 @@ use App\Features\MetaBoxes\ProjectIconesMetabox;
 use App\Http\Controllers\MailController;
 use App\Features\Pages\SendNewsletter;
 use App\Features\Pages\Page;
-
 use App\Setup;
 use App\Databases\Database;
-
-
-
-
+use App\Features\Pages\PageNewsletter;
 
 add_action('init', [ServicePostType::class, 'register']);
 

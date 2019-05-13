@@ -39,4 +39,12 @@ class Newsletter
             ]
         );
     }
+
+    public static function all()
+    {
+        global $wpdb;
+        $table = self::$table;
+        $query = "SELECT * FROM $table";
+        return $wpdb->get_results($query);
+    }
 }

@@ -18,6 +18,8 @@ class EnqueueScript
         wp_enqueue_style('media', get_template_directory_uri() . '/css/media.css');
         wp_enqueue_style('carousel-css', get_template_directory_uri() . '/css/owl.carousel.css');
         wp_enqueue_style('stylesheet', get_template_directory_uri() . '/css/style.css');
+        wp_enqueue_style('mdbootstrap', get_template_directory_uri() . '../../../../node_modules/mdbootstrap/css/mdb.min.css');
+
 
         // Ajout des scripts js
         // jquery perso n'utilise aucune dépendance 

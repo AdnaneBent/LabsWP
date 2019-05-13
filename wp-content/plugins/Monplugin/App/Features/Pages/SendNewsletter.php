@@ -7,6 +7,21 @@ use App\Http\Models\Newsletter;
 
 class SendNewsletter
 {
+
+    public static function init()
+    {
+        //https: //developer.wordpress.org/reference/functions/add_menu_page/  
+        add_menu_page(
+            __('Affichage des mails de la newsletter'), // Le titre qui s'affichera sur la page
+            __('Affichage Newsletter'), // le texte dans le menu
+            'edit_private_pages', // la capacité qu'il faut posséder en tant qu'utilisateur pour avoir accès à cette page (les roles et capacité seront vue plus tard)
+            'affichage-newsletter', // Le slug du menu
+            [self::class, 'render'], // La méthode qui va afficher la page
+            'dashicons-email-alt', // L'icon dans le menu
+            26 // la position dans le menu (à comparer avec la valeur deposition des autres liens menu que l'on retrouve dans la doc).
+        );
+    }
+
     /**
      * Initialisation de la page.
      *
@@ -38,5 +53,11 @@ class SendNewsletter
         }
         // la fonction wp_safe_redirect redirige vers une url. La fonction wp_get_referer renvoi vers la page d'ou la requête a été envoyé.
         wp_safe_redirect(wp_get_referer());
+    }
+
+    public static function render()
+    {
+        $news = array_reverse(Newsletter::all());
+        view('pages/send-newsletter', compact('news'));
     }
 }

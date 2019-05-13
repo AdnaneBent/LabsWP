@@ -17,7 +17,7 @@ class SendMail
             __('Affichage des mails grâce aux formulaire'), // Le titre qui s'affichera sur la page
             __('Affichage Mail'), // le texte dans le menu
             'edit_private_pages', // la capacité qu'il faut posséder en tant qu'utilisateur pour avoir accès à cette page (les roles et capacité seront vue plus tard)
-            'aff-mail', // Le slug du menu
+            'affichage-mail', // Le slug du menu
             [self::class, 'render'], // La méthode qui va afficher la page
             'dashicons-email-alt', // L'icon dans le menu
             26 // la position dans le menu (à comparer avec la valeur deposition des autres liens menu que l'on retrouve dans la doc).
