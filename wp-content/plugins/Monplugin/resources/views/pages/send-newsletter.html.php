@@ -10,7 +10,10 @@
                 <div class="postbox">
                     <div class="inside text-center">
                         <strong>Mails de la newsletter reçu </strong><?= $new->email; ?>
-                        <a href="<?php menu_page_url('mail-client'); ?>&action=delete&id=<?= $new->id; ?>" class="btn btn-danger text-dark">delete</a>
+                        <form action="<?php get_site_url(); ?>?action=new-delete" method="post">
+                            <input type="hidden" name="newsId" value="<?= $new->id; ?>">
+                            <button type="submit" class="btn btn-danger">delete</button>
+                        </form>
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -47,4 +47,17 @@ class Newsletter
         $query = "SELECT * FROM $table";
         return $wpdb->get_results($query);
     }
+
+    public static function delete($id)
+    {
+        global $wpdb;
+        // delete est une methode de notre class wpdb
+        // https://developer.wordpress.org/reference/classes/wpdb/delete/
+        return $wpdb->delete(
+            self::$table,
+            [
+                'id' => $id
+            ]
+        );
+    }
 }

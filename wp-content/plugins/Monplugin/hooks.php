@@ -14,7 +14,6 @@ use App\Features\Pages\SendNewsletter;
 use App\Features\Pages\Page;
 use App\Setup;
 use App\Databases\Database;
-use App\Features\Pages\PageNewsletter;
 
 add_action('init', [ServicePostType::class, 'register']);
 
@@ -45,6 +44,8 @@ add_action('admin_post_send-mail', [MailController::class, 'send']);
 add_action('admin_post_nopriv_send-mail', [MailController::class, 'send']);
 
 add_action('admin_post_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
+
+add_action('admin_action_new-delete', [SendNewsletter::class, 'delete']);
 
 add_action('admin_post_nopriv_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
 

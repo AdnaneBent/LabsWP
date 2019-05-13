@@ -11,7 +11,7 @@ class EnqueueScript
     {
         // Ajout des scripts css
 
-        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css');
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '../../../../node_modules/mdbootstrap/css/bootstrap.min.css');
         wp_enqueue_style('fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css');
         wp_enqueue_style('flaticon', get_template_directory_uri() . '/css/flaticon.css');
         wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/css/magnific-popup.css');
