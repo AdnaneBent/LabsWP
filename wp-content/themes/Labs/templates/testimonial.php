@@ -5,7 +5,7 @@ $titre_Testimonial = get_theme_mod('labs-testimonial-titre-setting'); ?>
 <div class="testimonial-section pb100">
     <div class="test-overlay"></div>
     <div class="container">
-        <div id="testimonial" class="row">
+        <div id="testimonial" class="row justify-content-end">
             <div class="col-md-8 col-md-offset-4">
                 <div class="section-title left">
                     <?php

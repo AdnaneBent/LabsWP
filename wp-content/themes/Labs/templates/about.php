@@ -67,7 +67,7 @@ $bgvideo = get_theme_mod('labs-about-video-setting')
             </div>
             <!-- popup video -->
             <div class="intro-video">
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-md-8 col-md-offset-2 text-center">
                         <?= wp_get_attachment_image(
                             $bgvideo['img'],
