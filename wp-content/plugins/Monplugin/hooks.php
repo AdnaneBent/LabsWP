@@ -11,6 +11,8 @@ use App\Features\Taxonomies\ProjectTaxonomy;
 use App\Features\MetaBoxes\ProjectIconesMetabox;
 use App\Http\Controllers\MailController;
 use App\Features\Pages\SendNewsletter;
+use App\Features\Pages\Page;
+
 use App\Setup;
 use App\Databases\Database;
 
@@ -53,3 +55,5 @@ add_action('admin_post_nopriv_send-newsletter', [SendNewsletter::class, 'send_ne
 add_action('init', [Setup::class, 'start_session']);
 
 register_activation_hook(__DIR__ . '/Monplugin.php', [Database::class, 'init']);
+
+add_action('admin_menu', [Page::class, 'init']);
