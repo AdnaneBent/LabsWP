@@ -43,6 +43,8 @@ add_action('admin_post_send-mail', [MailController::class, 'send']);
 
 add_action('admin_post_nopriv_send-mail', [MailController::class, 'send']);
 
+add_action('admin_action_mail-delete', [MailController::class, 'delete']);
+
 add_action('admin_post_send-newsletter', [SendNewsletter::class, 'send_newsletter']);
 
 add_action('admin_action_new-delete', [SendNewsletter::class, 'delete']);

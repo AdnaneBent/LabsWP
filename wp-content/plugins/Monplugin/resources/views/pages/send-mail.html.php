@@ -10,7 +10,7 @@
                 <div class="postbox w-50 mx-auto">
                     <div class="inside text-center">
                         <strong>Mails reçu </strong><?= $mail->email; ?>
-                        <a href="<?php menu_page_url('mail-client'); ?>&action=show&id=<?= $mail->id; ?>" class="btn btn-info text-dark">voir</a>
+                        <a href="<?php menu_page_url('affichage-mail'); ?>&action=show&id=<?= $mail->id; ?>" class="btn btn-info text-dark">voir</a>
                     </div>
                 </div>
             <?php endforeach; ?>
